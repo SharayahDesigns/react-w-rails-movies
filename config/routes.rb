@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+namespace :api do
+# resources :facts
+get 'movies', to: 'movies#index'
+get 'movies/:id', to: 'movies#show'
+# client send in param {movie:{username, text, stars(0-5) source}}
+post 'movies', to: 'movies#create'
+put 'movies/:id', to: 'movies#update'
+delete 'movies/:id', to: 'movies#destroy'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  end
 end
