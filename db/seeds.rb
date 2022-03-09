@@ -8,7 +8,7 @@
 
 Movie.destroy_all
 
-Movie.create(title:'LOTR', stars:5, source:'google', director:'Peter Jackson', genre: 'Fantasy')
+Movie.create(title:'Lord of the Rings', stars:5, source:'google', director:'Peter Jackson', genre: 'Fantasy')
 Movie.create(title:'The Silence of the Lambs', stars:4.5, source:'google', director:'Jonathan Demme', genre:'Drama, Thriller')
 Movie.create(title:'The Wedding Singer', stars:3, source:'google', director:'Frank Coraci', genre: 'Comedy')
 
