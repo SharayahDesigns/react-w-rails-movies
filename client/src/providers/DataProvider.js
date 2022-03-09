@@ -23,6 +23,22 @@ const DataProvider = (props) => {
     alert('err getting movies')
     }
   }
+  //create
+  // 1.get data from form to method
+  const addMovie = async (movie) => {
+  // 2. Add to DB
+    try {
+      let res = await axios.post('/api/movies',movie)
+      console.log(res)
+      
+    } catch(err) {
+      console.log(err)
+      console.log(err.res)
+    }
+  }
+  
+  
+  
   
   //1. NEED TO REMOVE FROM DB
   //2. NEED TO REMOVE FROM FE
@@ -48,6 +64,7 @@ const DataProvider = (props) => {
   const dataProviderThing = {
    getMovies,
     deleteMovie,   
+    addMovie,
     movies,
    
 };
