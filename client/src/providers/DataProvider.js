@@ -1,11 +1,13 @@
 import React,{useEffect,useState} from "react";
 import axios from 'axios'
+import {useNavigate} from "react-router-dom";
 
 // createContext HERE this doing a lot for
 // create Context/Provider, get and set out data
 export const DataContext = React.createContext();
 
 const DataProvider = (props) => {
+  const navigate = useNavigate()
   const [movies,setMovies] = useState([]);
   
   useEffect(() => {
@@ -26,17 +28,33 @@ const DataProvider = (props) => {
   //create
   // 1.get data from form to method
   const addMovie = async (movie) => {
+    console.log(movie)
   // 2. Add to DB
     try {
       let res = await axios.post('/api/movies',movie)
       console.log(res)
-      
+      //3. add to state
+      setMovies([res.data, ...movies])
+      //4. UX step Navigate
+      navigate('/movies')
     } catch(err) {
       console.log(err)
       console.log(err.res)
     }
   }
+  //update
+  // 1. get data from form to method
+  const updateMovie = async (movie) => {
+    try {
+      let res = await axios.put(`/api/movies/${movie.id}`, movie)
+    console.log(res)
+    } catch(err) {
+      console.log('err on update')
+      console.log (err.res)
+    }
   
+  
+  }
   
   
   
@@ -65,6 +83,7 @@ const DataProvider = (props) => {
    getMovies,
     deleteMovie,   
     addMovie,
+    updateMovie,
     movies,
    
 };

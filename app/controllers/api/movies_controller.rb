@@ -38,7 +38,7 @@ end
 #-------------------------    PRIVATE
 private
 def movie_params
-    params.require(:movie).permit(:title, :genre, :stars, :source, :director)
+    params.require(:movie).permit(:title, :genre, :stars, :genre, :director,:text)
 end
 def set_movie
     @movie = Movie.find(params[:id])

@@ -18,8 +18,8 @@ const NotFound = ()=>{
 }
 
 ReactDOM.render(
-  <DataProvider>
     <BrowserRouter>
+  <DataProvider>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/about" element={<About />} />
@@ -31,8 +31,8 @@ ReactDOM.render(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </BrowserRouter>
-  </DataProvider>,
+  </DataProvider>
+    </BrowserRouter>,
   document.getElementById("root")
 );
 

@@ -5,17 +5,14 @@ import {DataContext} from '../providers/DataProvider'
 
 
 const MovieForm = (props) => {
-  const {addMovie} = useContext(DataContext)
+  const {addMovie, updateMovie} = useContext(DataContext)
   const {state} = useLocation()
   const [title,setTitle] = useState(state && state.title)
   const [director,setDirector] = useState(state && state.director)
   const [stars,setStars] = useState(state && state.stars)
-  const [source, setSource] = useState(state && state.source)
+  const [text, setText] = useState(state && state.text)
+  const [genre, setGenre] = useState(state && state.genre)
   
-  
-  
-  console.log(state)
-  console.log(useLocation)
   
   
   useEffect(() => {
@@ -25,19 +22,33 @@ const MovieForm = (props) => {
      return () => {
         console.log('MovieForm unMounted')
    }
-  
-    
   },[])
+  
   const handleSubmit = (e) => {
     e.preventDefault()
+   
     if(state && state.id) {
-    
+      //update case
+      console.log('update')
+      updateMovie(({director,title,genre,stars,text,id: state.id}))
+      console.log()
     } else {
-      addMovie({title, director, stars, source})
+      //new case
+      console.log('create')
+      addMovie({director, title, genre, stars, text})
+      console.log({director, title, genre, stars})
     }
+    // e.preventDefault();
+    // if(stars <= 0 || stars >= 6) {
+    //   alert('invalid star')
+    //   return
+    //   }
+    // if(state && state.id) {
     
-  
-  }
+    // } else {
+      
+    // }
+  };
   return (
     <div className='border'>
       <h1>Movie form</h1>
@@ -47,10 +58,12 @@ const MovieForm = (props) => {
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <p>Director</p>
         <input value={director} onChange={(e) => setDirector(e.target.value)} />
-        <p>stars</p>
+        <p>Stars</p>
         <input value={stars} onChange={(e) => setStars(e.target.value)} />
-        <p>source</p>
-        <input value={source} onChange={(e)=> setSource(e.target.value)}/>
+        <p>Genre</p>
+        <input value={genre} onChange={(e) => setGenre(e.target.value)} />
+        <p>About</p>
+        <input value={text} onChange={(e)=> setText(e.target.value)}/>
         
         <button>{state && state.id ? 'Edit': 'New'}</button>
         
