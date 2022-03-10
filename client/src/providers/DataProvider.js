@@ -45,8 +45,14 @@ const DataProvider = (props) => {
   //update
   // 1. get data from form to method
   const updateMovie = async (movie) => {
+    // 2. add to DB
     try {
-      let res = await axios.put(`/api/movies/${movie.id}`, movie)
+      let res = await axios.put(`/api/movies/${movie.id}`,movie)
+      //3. update to State
+      const updatedMovies = movies.map(m => m.id === res.data.id ? res.data : m)
+      setMovies(updatedMovies)
+      //4. UX step
+      navigate('/movies')
     console.log(res)
     } catch(err) {
       console.log('err on update')

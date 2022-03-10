@@ -1,28 +1,21 @@
-import { Link, Outlet } from 'react-router-dom';
-
-
-
-
-
+import {Link,Outlet} from 'react-router-dom';
+import moviepic from '../src/Images/moviepic.jpg'
 
 
 function App() {
   return (
     <div className='border'>
-      <h1>BEST MOVIES</h1>
-      <nav
-        style={{
-          borderBottom:'1px solid'
-        }}
-        >
-        <Link to='/home'>Home</Link> - {' '}
-          <Link to='/movies'>Movies</Link> - {' '}
-          <Link to='/movies/new'>New Movies</Link> - {' '}
+      <h1 className='head'>LIST OF BEST MOVIES</h1>
+      
+      <nav className='navbar'>  
+        <img className='pic' src={moviepic} height={140} />
         
-          <Link to='/about'>About</Link>
+          <Link className='movies' to='/movies'>Movies</Link> {' '}
+          <Link className='newmovies' to='/movies/new'>New Movies</Link> {' '}
+          
         </nav>
-      <p>The Secret to film is that it's an illusion</p>
-      <p>- George Lucus</p>
+      <p className='info'>The Secret to film is that it's an illusion</p>
+      <p className='info'>- George Lucus</p>
         <Outlet />
     </div>
   );

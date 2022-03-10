@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import { DataContext } from "../providers/DataProvider"
 const Home = ()=>{
-    const {dataDemo, setDataDemo} = useContext(DataContext)
+    
     return (
         <div>
-            <h1>Home Page</h1>
-            <button onClick={()=>setDataDemo('dataDemo changed in home')}>Change dataDemo</button>
-            <p>demoState: {dataDemo}</p>
+            <h1>Movies are the Greatest Invention of all time</h1>
+            
+            <p>Come and learn about all the great movies and add your rating </p>
         </div>
     )
 }

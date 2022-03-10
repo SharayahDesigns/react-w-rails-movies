@@ -30,12 +30,12 @@ const MovieForm = (props) => {
     if(state && state.id) {
       //update case
       console.log('update')
-      updateMovie(({director,title,genre,stars,text,id: state.id}))
+      updateMovie({director,title,genre,stars,text,id: state.id});
       console.log()
     } else {
       //new case
       console.log('create')
-      addMovie({director, title, genre, stars, text})
+      addMovie({director,title,genre,stars,text});
       console.log({director, title, genre, stars})
     }
     // e.preventDefault();
@@ -51,10 +51,10 @@ const MovieForm = (props) => {
   };
   return (
     <div className='border'>
-      <h1>Movie form</h1>
+      <h1 className='movietitle' >Movie form</h1>
       
-      <form onSubmit={handleSubmit}>
-        <p>Movie Title</p>
+      <form className='form' onSubmit={handleSubmit}>
+        <p className='movietitle'>Movie Title</p>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <p>Director</p>
         <input value={director} onChange={(e) => setDirector(e.target.value)} />
@@ -62,13 +62,13 @@ const MovieForm = (props) => {
         <input value={stars} onChange={(e) => setStars(e.target.value)} />
         <p>Genre</p>
         <input value={genre} onChange={(e) => setGenre(e.target.value)} />
-        <p>About</p>
+        <p>About Movie</p>
         <input value={text} onChange={(e)=> setText(e.target.value)}/>
         
         <button>{state && state.id ? 'Edit': 'New'}</button>
         
       </form>
-      <p>{JSON.stringify(state && state.title)}</p>
+      {/* <p>{JSON.stringify(state && state.title)}</p> */}
       
     </div>
   )
