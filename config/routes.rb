@@ -8,5 +8,12 @@ post 'movies', to: 'movies#create'
 put 'movies/:id', to: 'movies#update'
 delete 'movies/:id', to: 'movies#destroy'
 
+get 'images', to: 'images#index'
+get 'images/:id', to: 'images#show'
+# client send in param {movie:{username, text, stars(0-5) source}}
+post 'images', to: 'images#create'
+put 'images/:id', to: 'images#update'
+delete 'images/:id', to: 'images#destroy'
+
   end
 end
